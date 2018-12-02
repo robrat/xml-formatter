@@ -13,4 +13,14 @@
     </parent>
 
     <artifactId>xml-formatter-cli</artifactId>
+
+    <name>XML Formatter :: CLI</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.robrat</groupId>
+            <artifactId>xml-formatter-lib</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -10,6 +10,8 @@
 
     <packaging>pom</packaging>
 
+    <name>XML Formatter :: BOM</name>
+
     <properties>
         <!-- provided versions -->
         <lombok.version>1.18.4</lombok.version>

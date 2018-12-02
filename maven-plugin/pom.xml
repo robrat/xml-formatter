@@ -13,4 +13,14 @@
     </parent>
 
     <artifactId>xml-formatter-maven-plugin</artifactId>
+
+    <name>XML Formatter :: Maven Plugin</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.robrat</groupId>
+            <artifactId>xml-formatter-lib</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
