@@ -2,6 +2,7 @@ package com.github.robrat.xmlformatter.lib;
 
 import static com.github.robrat.xmlformatter.lib.AttributeFormatter.printAttributes;
 
+import com.github.robrat.xmlformatter.lib.exception.EmptyFileException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
@@ -40,12 +41,21 @@ public class XmlFormatter {
   public static XmlFormatter ofXmlFile(String xmlFilename)
       throws IOException, ParserConfigurationException, SAXException {
     Path file = Paths.get(xmlFilename);
+    return ofXmlFile(file);
+  }
+
+  public static XmlFormatter ofXmlFile(Path file)
+      throws IOException, ParserConfigurationException, SAXException {
     String xml = new String(Files.readAllBytes(file), StandardCharsets.UTF_8);
     return ofXmlString(xml);
   }
 
   public static XmlFormatter ofXmlString(String xml)
       throws ParserConfigurationException, SAXException, IOException {
+    String trimmed = xml.trim();
+    if (trimmed.length() == 0) {
+      throw new EmptyFileException();
+    }
     Document doc = parseXml(xml);
     return new XmlFormatter(xml, doc);
   }
