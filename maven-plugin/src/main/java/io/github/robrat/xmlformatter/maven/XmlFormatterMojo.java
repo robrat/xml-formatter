@@ -1,8 +1,8 @@
-package com.github.robrat.xmlformatter.maven;
+package io.github.robrat.xmlformatter.maven;
 
-import com.github.robrat.xmlformatter.lib.XmlConfig;
-import com.github.robrat.xmlformatter.lib.XmlFormatter;
-import com.github.robrat.xmlformatter.lib.exception.EmptyFileException;
+import io.github.robrat.xmlformatter.lib.XmlConfig;
+import io.github.robrat.xmlformatter.lib.XmlFormatter;
+import io.github.robrat.xmlformatter.lib.exception.EmptyFileException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

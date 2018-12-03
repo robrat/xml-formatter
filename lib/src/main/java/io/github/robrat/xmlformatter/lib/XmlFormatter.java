@@ -1,8 +1,8 @@
-package com.github.robrat.xmlformatter.lib;
+package io.github.robrat.xmlformatter.lib;
 
-import static com.github.robrat.xmlformatter.lib.AttributeFormatter.printAttributes;
+import static io.github.robrat.xmlformatter.lib.AttributeFormatter.printAttributes;
 
-import com.github.robrat.xmlformatter.lib.exception.EmptyFileException;
+import io.github.robrat.xmlformatter.lib.exception.EmptyFileException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;

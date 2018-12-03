@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.robrat</groupId>
+        <groupId>io.github.robrat</groupId>
         <artifactId>xml-formatter-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent</relativePath>
@@ -22,7 +22,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.robrat</groupId>
+            <groupId>io.github.robrat</groupId>
             <artifactId>xml-formatter-lib</artifactId>
             <version>${project.version}</version>
         </dependency>

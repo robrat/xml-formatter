@@ -1,4 +1,4 @@
-package com.github.robrat.xmlformatter.lib;
+package io.github.robrat.xmlformatter.lib;
 
 import lombok.AccessLevel;
 import lombok.Builder;

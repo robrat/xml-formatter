@@ -1,4 +1,4 @@
-package com.github.robrat.xmlformatter.lib.exception;
+package io.github.robrat.xmlformatter.lib.exception;
 
 public class XmlFormattingException extends RuntimeException {
 

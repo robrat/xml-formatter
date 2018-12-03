@@ -1,4 +1,4 @@
-package com.github.robrat.xmlformatter.maven;
+package io.github.robrat.xmlformatter.maven;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;

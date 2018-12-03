@@ -1,4 +1,4 @@
-package com.github.robrat.xmlformatter.lib;
+package io.github.robrat.xmlformatter.lib;
 
 import java.util.ArrayList;
 import org.w3c.dom.NamedNodeMap;

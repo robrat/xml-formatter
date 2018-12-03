@@ -1,6 +1,6 @@
-package com.github.robrat.xmlformatter.lib;
+package io.github.robrat.xmlformatter.lib;
 
-import static com.github.robrat.xmlformatter.lib.AttributeFormatter.compareNodeNames;
+import static io.github.robrat.xmlformatter.lib.AttributeFormatter.compareNodeNames;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import org.junit.Test;
