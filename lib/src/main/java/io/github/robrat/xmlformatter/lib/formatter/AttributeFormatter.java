@@ -1,24 +1,20 @@
-package io.github.robrat.xmlformatter.lib;
+package io.github.robrat.xmlformatter.lib.formatter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 class AttributeFormatter {
 
   static void printAttributes(StringBuilder sb, Node node, int attributeOffset) {
-    String attributeIndent = createAttributeIndent(attributeOffset);
-
-    NamedNodeMap attributeMap = node.getAttributes();
-    if (attributeMap == null) {
+    List<Node> attributeNodes = sortAttributeNodes(node);
+    if (attributeNodes.isEmpty()) {
       return;
     }
 
-    ArrayList<Node> attributeNodes = new ArrayList<>();
-    for (int i = 0, len = attributeMap.getLength(); i < len; i++) {
-      attributeNodes.add(attributeMap.item(i));
-    }
-    attributeNodes.sort(AttributeFormatter::compare);
+    String attributeIndent = createAttributeIndent(attributeOffset);
 
     boolean first = true;
     for (Node attributeNode : attributeNodes) {
@@ -36,6 +32,24 @@ class AttributeFormatter {
     }
   }
 
+  private static List<Node> sortAttributeNodes(Node node) {
+    return sortAttributeNodes(node.getAttributes());
+  }
+
+  static List<Node> sortAttributeNodes(NamedNodeMap attributeMap) {
+    if (attributeMap == null) {
+      return Collections.emptyList();
+    }
+
+    ArrayList<Node> attributeNodes = new ArrayList<>();
+    for (int i = 0, len = attributeMap.getLength(); i < len; i++) {
+      attributeNodes.add(attributeMap.item(i));
+    }
+    attributeNodes.sort(AttributeFormatter::compare);
+
+    return attributeNodes;
+  }
+
   private static String createAttributeIndent(int len) {
     StringBuilder sb = new StringBuilder(len);
     for (int i = 0; i < len; i++) {
@@ -49,8 +63,8 @@ class AttributeFormatter {
   }
 
   static int compareNodeNames(String nodeName1, String nodeName2) {
-    String ns1 = extractNamespace(nodeName1);
-    String ns2 = extractNamespace(nodeName2);
+    String ns1 = extractNamespacePrefix(nodeName1);
+    String ns2 = extractNamespacePrefix(nodeName2);
 
     if (ns1 == null && ns2 == null) {
       return nodeName1.compareTo(nodeName2);
@@ -82,7 +96,11 @@ class AttributeFormatter {
     return nodeName1.compareTo(nodeName2);
   }
 
-  private static String extractNamespace(String name) {
+  private static String extractNamespacePrefix(String name) {
+    if ("xmlns".equals(name)) {
+      return "xmlns";
+    }
+
     int idx = name.indexOf(':');
     if (idx < 0) {
       return null;
