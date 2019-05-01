@@ -14,11 +14,11 @@
 
     <properties>
         <!-- provided versions -->
-        <lombok.version>1.18.4</lombok.version>
+        <lombok.version>1.18.6</lombok.version>
 
         <!-- compile versions -->
         <slf4j.version>1.7.25</slf4j.version>
-        <log4j2.version>2.11.1</log4j2.version>
+        <log4j2.version>2.11.2</log4j2.version>
 
         <!-- test versions -->
         <junit.version>4.12</junit.version>
