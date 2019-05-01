@@ -17,7 +17,7 @@
     <name>XML Formatter :: CLI</name>
 
     <properties>
-        <main-class>com.github.robrat.xmlformatter.Main</main-class>
+        <main-class>io.github.robrat.xmlformatter.Main</main-class>
     </properties>
 
     <dependencies>
@@ -25,6 +25,24 @@
             <groupId>io.github.robrat</groupId>
             <artifactId>xml-formatter-lib</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.72</version>
         </dependency>
     </dependencies>
 

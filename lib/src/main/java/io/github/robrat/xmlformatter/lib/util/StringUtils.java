@@ -1,5 +1,7 @@
 package io.github.robrat.xmlformatter.lib.util;
 
+import lombok.NonNull;
+
 public final class StringUtils {
 
   private StringUtils() {}
@@ -58,5 +60,33 @@ public final class StringUtils {
       i++;
     }
     return count;
+  }
+
+  public static String repeat(char c, int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Repeatition must not be smaller than zero");
+    }
+    if (n == 0) {
+      return "";
+    }
+    StringBuilder sb = new StringBuilder(n);
+    for (int i = 0; i < n; i++) {
+      sb.append(c);
+    }
+    return sb.toString();
+  }
+
+  public static String repeat(@NonNull String s, int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Repeatition must not be smaller than zero");
+    }
+    if (n == 0) {
+      return "";
+    }
+    StringBuilder sb = new StringBuilder(s.length() * n);
+    for (int i = 0; i < n; i++) {
+      sb.append(s);
+    }
+    return sb.toString();
   }
 }

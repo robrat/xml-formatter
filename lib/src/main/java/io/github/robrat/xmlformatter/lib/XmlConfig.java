@@ -10,9 +10,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class XmlConfig {
 
+  private static final String DEFAULT_INDENT = "    ";
+
   private final String indent;
 
   public static XmlConfig defaults() {
-    return XmlConfig.builder().indent("    ").build();
+    return XmlConfig.builder().indent(DEFAULT_INDENT).build();
   }
 }
