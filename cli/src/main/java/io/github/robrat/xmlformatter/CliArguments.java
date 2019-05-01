@@ -13,23 +13,21 @@ class CliArguments {
   @Parameter(description = "The list of files to format", converter = FileConverter.class)
   private List<File> files;
 
-  @Parameter(
-      names = {"-i", "--indent"},
-      description = "Number of spaces for indent")
+  @Parameter(names = "-excludeFiles", description = "Files to exclude")
+  private List<String> excludeFiles;
+
+  @Parameter(names = "-excludePaths", description = "Paths to exclude")
+  private List<String> excludePaths;
+
+  @Parameter(names = "-indent", description = "Number of spaces for indent")
   private Integer indent;
 
-  @Parameter(
-      names = {"--loglevel"},
-      description = "Level of verbosity")
+  @Parameter(names = "-loglevel", description = "Level of verbosity")
   private StandardLevel loglevel;
 
-  @Parameter(
-      names = {"--validate"},
-      description = "Only print non formatted files")
+  @Parameter(names = "-validate", description = "Only print non formatted files")
   private boolean validate;
 
-  @Parameter(
-      names = {"-h", "--help"},
-      help = true)
+  @Parameter(names = "-help", help = true)
   private boolean help;
 }

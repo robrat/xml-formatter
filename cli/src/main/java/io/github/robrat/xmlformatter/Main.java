@@ -37,7 +37,8 @@ public class Main {
 
     applyLogLevel(cliArgs.getLoglevel());
 
-    List<Path> xmlFiles = collectXmlFiles(cliArgs.getFiles());
+    List<Path> xmlFiles =
+        collectXmlFiles(cliArgs.getFiles(), cliArgs.getExcludeFiles(), cliArgs.getExcludePaths());
     XmlConfig xmlConfig = createXmlConfig(cliArgs);
 
     processFiles(xmlFiles, xmlConfig, cliArgs.isValidate());
@@ -77,7 +78,11 @@ public class Main {
         log.info("All xml files are formatted");
         return;
       }
-      log.error(nFormatted + " xml files are not formatted!");
+      if (nFormatted > 1) {
+        log.error(nFormatted + " xml files are not formatted!");
+      } else {
+        log.error(nFormatted + " xml file is not formatted!");
+      }
       System.exit(1);
     }
 
@@ -108,11 +113,14 @@ public class Main {
     return XmlConfig.builder().indent(indent).build();
   }
 
-  private static List<Path> collectXmlFiles(List<File> names) throws IOException {
+  private static List<Path> collectXmlFiles(
+      List<File> names, List<String> excludeFiles, List<String> excludePaths) throws IOException {
+
+    XmlFileTreeVisitor xmlFileTreeVisitor = new XmlFileTreeVisitor(excludeFiles, excludePaths);
     if (names == null || names.isEmpty()) {
       Path rootPath = Paths.get("").toAbsolutePath();
       log.debug("Collecting xml files in {} ...", rootPath);
-      XmlFileTreeVisitor xmlFileTreeVisitor = new XmlFileTreeVisitor();
+
       Files.walkFileTree(rootPath, xmlFileTreeVisitor);
       xmlFileTreeVisitor.getXmlFiles().forEach(System.out::println);
       return xmlFileTreeVisitor.getXmlFiles();
